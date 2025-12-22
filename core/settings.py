@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 from pathlib import Path
 import dj_database_url
 import os
+from dotenv import load_dotenv
+load_dotenv()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,10 +25,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-%cx%bxw$j)p+c-n)enl1tsr0mj-5mcs-42&lbup=crmmwyy#7&'
+# SECRET_KEY = 'django-insecure-%cx%bxw$j)p+c-n)enl1tsr0mj-5mcs-42&lbup=crmmwyy#7&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+SECRET_KEY = os.environ.get('SECRET_KEY')
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ['.onrender.com', 'localhost', '127.0.0.1']
 
@@ -143,3 +148,4 @@ SIMPLE_JWT = {
     'USER_ID_FIELD': 'id',        # DB field
     'USER_ID_CLAIM': 'user_id',   # Token key (default)
 }
+
