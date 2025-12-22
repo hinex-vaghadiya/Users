@@ -1,0 +1,37 @@
+
+class Users(models.Model):
+    user_id=models.AutoField(primary_key=True)
+    name=models.CharField(max_length=30,null=False,default=" ")
+    username=models.CharField(max_length=30,unique=True)
+    email=models.EmailField(max_length=50)
+    password=models.CharField()
+    role=models.CharField(choices=(('user','user'),('reseller','reseller')))
+    address=models.CharField(max_length=200,default=" ",null=False)
+    mobile_number=models.IntegerField()
+    profile_pic=models.CharField(default=" ",null=False)
+    is_active=models.BooleanField(default=True)
+
+
+{
+  "name": "Alice Smith",
+  "username": "alice123",
+  "email": "alice@example.com",
+  "password": "SecurePass1",
+  "role": "user",
+  "address": "123 Main Street, City, Country",
+  "mobile_number": 1234567890,
+  "profile_pic": "https://example.com/images/alice.jpg",
+  "is_active": true
+}
+
+
+{
+    "username": "hh",
+    "password": "hh"
+}
+
+
+{
+    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY2MzUwNTk4LCJpYXQiOjE3NjYzNTAyOTgsImp0aSI6IjVjZTliZDg5MDYxZjRlMjBhYjJmNTJkMGIzNmUxNTAwIiwidXNlcl9pZCI6IjcifQ._wSdqpSaMUB6f4K7nJCNP44cyVCmEtcLgBNPOA3e1go",
+    "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc2NjQzNjY5OCwiaWF0IjoxNzY2MzUwMjk4LCJqdGkiOiIxNzY2Y2UxNTE3Mzg0MDIwOTlkMjA0OGI4Y2UwNDllYyIsInVzZXJfaWQiOiI3In0.9Mh9__olJ2C6PGU-SVtGGcU85hv1eAlwafAyApOcrSw"
+}
