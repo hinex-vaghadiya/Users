@@ -15,7 +15,7 @@ import dj_database_url
 import os
 from dotenv import load_dotenv
 load_dotenv()
-
+SECRET_KEY=wX2vJH8vA3w6l5U9xR7fK9zP0dS1bQ2eT8yM4rL6mN
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -149,6 +149,7 @@ AUTH_USER_MODEL = 'accounts.Accounts'
 
 SIMPLE_JWT = {
     'USER_ID_FIELD': 'id',        # DB field
-    'USER_ID_CLAIM': 'user_id',   # Token key (default)
+    'USER_ID_CLAIM': 'user_id',
+    "SIGNING_KEY": SECRET_KEY,# Token key (default)
 }
 
