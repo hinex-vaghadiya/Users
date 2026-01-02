@@ -149,7 +149,7 @@ AUTH_USER_MODEL = 'accounts.Accounts'
 
 SIMPLE_JWT = {
     'USER_ID_FIELD': 'id',        # DB field
-    'USER_ID_CLAIM': 'user_id'
-    "SIGNING_KEY": SECRET_KEY_sign,# Token key (default)
+    'USER_ID_CLAIM': 'user_id',
+    "SIGNING_KEY": SECRET_KEY_sign # Token key (default)
 }
 
