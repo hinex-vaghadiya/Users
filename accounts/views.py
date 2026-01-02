@@ -36,7 +36,9 @@ class LoginView(APIView):
                 refresh=RefreshToken.for_user(user) # <- Use check_password
                 return Response({
                     "access_token":str(refresh.access_token),
-                    "refresh_token":str(refresh)
+                    "refresh_token":str(refresh),
+                    "user_id":id,
+                    "user_name":user.username
                 }, status=status.HTTP_200_OK)
             else:
                 return Response({"message": "password incorrect"}, status=status.HTTP_401_UNAUTHORIZED)
