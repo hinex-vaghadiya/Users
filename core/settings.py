@@ -47,17 +47,47 @@ INSTALLED_APPS = [
     'accounts',
     'rest_framework',
     'rest_framework_simplejwt',
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+]
+# --- CORS SETTINGS ---
+# 1. Allow the frontend URL (Check your browser's address bar!)
+# If you just opened the HTML file, it might be null or a specific port.
+# CORS_ALLOWED_ORIGINS = [
+#     "http://127.0.0.1:5500",  # VS Code Live Server usually uses this
+#     "http://localhost:5500",
+#     "http://127.0.0.1:8000",
+#     "http://localhost:3000",  # React default
+# ]
+
+# If you are just opening the file directly (file://), you might need this (dev only):
+CORS_ALLOW_ALL_ORIGINS = True 
+
+# 2. Allow Cookies (CRITICAL)
+CORS_ALLOW_CREDENTIALS = True
+
+# 3. Allow Headers
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
 ]
 
 ROOT_URLCONF = 'core.urls'
