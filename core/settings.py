@@ -180,6 +180,8 @@ AUTH_USER_MODEL = 'accounts.Accounts'
 SIMPLE_JWT = {
     'USER_ID_FIELD': 'id',        # DB field
     'USER_ID_CLAIM': 'user_id',
-    "SIGNING_KEY": SECRET_KEY_sign # Token key (default)
+    "SIGNING_KEY": SECRET_KEY_sign,# Token key (default)
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=20),  # Access token expires in 20 minutes
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7)  # Refresh token expires in 7 days
 }
 
