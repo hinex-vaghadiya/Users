@@ -15,6 +15,7 @@ import dj_database_url
 import os
 from dotenv import load_dotenv
 load_dotenv()
+from datetime import timedelta
 SECRET_KEY_sign='BOBu0bxwcmLv_mhZZAaIWIGKqCslW2ojeWgrOdqFs78'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
