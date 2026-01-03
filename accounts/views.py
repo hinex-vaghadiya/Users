@@ -62,5 +62,18 @@ class profileView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK) 
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class LogoutView(APIView):
+    permission_classes=[IsAuthenticated]
+    def post(self,request):
+        try:
+            refresh_token=request.data.get('refresh_token')
+            if not refresh_token:
+                return Response({'message':'refresh_token not send'},status=status.HTTP_400_BAD_REQUEST)
+            token=RefreshToken(refresh_token)
+            token.blacklist()
+            return Response({"message":"Succesfully Logged Out"},status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"message":f"{e}"},status=status.HTTP_400_BAD_REQUEST)
         
         
