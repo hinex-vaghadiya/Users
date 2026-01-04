@@ -18,7 +18,7 @@ class RegisterView(APIView):
             serializer.save()
             return Response({"message":"sucess"},status=status.HTTP_201_CREATED)
         else:
-            return Response({"error":""},status=status.HTTP_400_BAD_REQUEST)
+            return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
     def get(self,request):
         users=Accounts.objects.all()
         serializer=UserRegistrationSerializer(users,many=True)
