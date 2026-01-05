@@ -7,5 +7,3 @@ dj-database-url
 python-dotenv 
 whitenoise
 django-cors-headers
-drf-spectacular 
-drf-spectacular-sidecar
