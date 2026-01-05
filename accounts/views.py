@@ -9,6 +9,9 @@ from django.contrib.auth.hashers import check_password
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
+from django.core.cache import cache
+import time
+
 # Create your views here.
 
 class RegisterView(APIView):
@@ -79,5 +82,17 @@ class LogoutView(APIView):
             return Response({"message":"Succesfully Logged Out"},status=status.HTTP_200_OK)
         except Exception as e:
             return Response({"message":f"{e}"},status=status.HTTP_400_BAD_REQUEST)
+            
+def cron_view(request):
+    if cache.get("cron_lock"):
+        return JsonResponse({"status": "already running"})
+
+    cache.set("cron_lock", True, timeout=120)
+
+    try:
+        time.sleep(11)  # your job
+        return JsonResponse({"status": "success"})
+    finally:
+        cache.delete("cron_lock")
         
         
