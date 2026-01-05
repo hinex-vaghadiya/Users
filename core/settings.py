@@ -205,4 +205,8 @@ SPECTACULAR_SETTINGS = {
             }
         }
     },
+    'SIDEBAR_PATHS': {
+        # Custom sidebar paths can be added here
+    },
+}
 
