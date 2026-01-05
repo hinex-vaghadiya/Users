@@ -207,4 +207,11 @@ SIMPLE_JWT = {
 #         # Custom sidebar paths can be added here
 #     },
 # }
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "LOCATION": "cron-lock",
+    }
+}
+
 
