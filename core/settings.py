@@ -49,8 +49,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     "corsheaders",
-    'drf_spectacular',
-    'drf_spectacular_sidecar',
+    # 'drf_spectacular',
+    # 'drf_spectacular_sidecar',
 ]
 
 MIDDLEWARE = [
@@ -174,7 +174,7 @@ REST_FRAMEWORK = {
      'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
     ),
-    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    # 'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     
 
 }
@@ -189,22 +189,22 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7)  # Refresh token expires in 7 days
 }
 # Optional: Customize the API documentation information
-SPECTACULAR_SETTINGS = {
-    'TITLE': 'Your Project API',
-    'DESCRIPTION': 'Documentation for your API endpoints',
-    'VERSION': '1.0.0',
-    'SECURITY': [{"BearerAuth": []}], # Example for JWT authentication
-    'COMPONENTS': {
-        'securitySchemes': {
-            'BearerAuth': {
-                'type': 'http',
-                'scheme': 'bearer',
-                'bearerFormat': 'JWT',
-            }
-        }
-    },
-    'SIDEBAR_PATHS': {
-        # Custom sidebar paths can be added here
-    },
-}
+# SPECTACULAR_SETTINGS = {
+#     'TITLE': 'Your Project API',
+#     'DESCRIPTION': 'Documentation for your API endpoints',
+#     'VERSION': '1.0.0',
+#     'SECURITY': [{"BearerAuth": []}], # Example for JWT authentication
+#     'COMPONENTS': {
+#         'securitySchemes': {
+#             'BearerAuth': {
+#                 'type': 'http',
+#                 'scheme': 'bearer',
+#                 'bearerFormat': 'JWT',
+#             }
+#         }
+#     },
+#     'SIDEBAR_PATHS': {
+#         # Custom sidebar paths can be added here
+#     },
+# }
 
