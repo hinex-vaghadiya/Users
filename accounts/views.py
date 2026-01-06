@@ -82,7 +82,7 @@ class LogoutView(APIView):
             return Response({"message":f"{e}"},status=status.HTTP_400_BAD_REQUEST)
 
 class ActivenowView(APIView):
-    def post(self,request):
+    def get(self,request):
         return Response({"message":"Activated"},status=status.HTTP_200_OK)
             
 
