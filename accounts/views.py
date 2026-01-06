@@ -80,6 +80,10 @@ class LogoutView(APIView):
             return Response({"message":"Succesfully Logged Out"},status=status.HTTP_200_OK)
         except Exception as e:
             return Response({"message":f"{e}"},status=status.HTTP_400_BAD_REQUEST)
+
+class ActivenowView(APIView):
+    def post(self,request):
+        return Response({"message":"Activated"},status=status.HTTP_200_OK)
             
 
         
