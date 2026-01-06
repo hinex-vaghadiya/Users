@@ -1,5 +1,5 @@
 from django.urls import path,include
-from accounts.views import RegisterView,LoginView,profileView,LogoutView,cron_view
+from accounts.views import RegisterView,LoginView,profileView,LogoutView
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -12,7 +12,6 @@ urlpatterns =[
     path('account',profileView.as_view()),
     path('refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('logout',LogoutView.as_view()),
-    path("cron/", cron_view, name="cron_view"),
     # path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     # # Optional UI:
     # path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
