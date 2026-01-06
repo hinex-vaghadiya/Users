@@ -12,7 +12,7 @@ urlpatterns =[
     path('account',profileView.as_view()),
     path('refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('logout',LogoutView.as_view()),
-    path('activenow',ActivenowView.as_view()),
+    path('active',ActivenowView.as_view()),
     # path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     # # Optional UI:
     # path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
