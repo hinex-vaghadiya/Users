@@ -7,7 +7,7 @@ from rest_framework import status,permissions
 from accounts.models import Accounts
 from django.contrib.auth.hashers import check_password
 from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
 # Create your views here.
@@ -84,7 +84,31 @@ class LogoutView(APIView):
 class ActivenowView(APIView):
     def get(self,request):
         return Response({"message":"Activated"},status=status.HTTP_200_OK)
-            
 
-        
-        
+class AdminUsersView(APIView):
+    permission_classes = [AllowAny]
+    authentication_classes = []
+
+    def get(self, request, pk=None):
+        if pk:
+            return Response({"error": "Method not allowed for this route"}, status=status.HTTP_400_BAD_REQUEST)
+        users = Accounts.objects.all()
+        serializer = UserRegistrationSerializer(users, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def patch(self, request, pk):
+        try:
+            user = Accounts.objects.get(id=pk)
+            user.is_active = not user.is_active
+            user.save()
+            return Response({"message": f"User {'activated' if user.is_active else 'deactivated'}", "is_active": user.is_active})
+        except Accounts.DoesNotExist:
+            return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+
+    def delete(self, request, pk):
+        try:
+            user = Accounts.objects.get(id=pk)
+            user.delete()
+            return Response({"message": "User deleted successfully"}, status=status.HTTP_200_OK)
+        except Accounts.DoesNotExist:
+            return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
