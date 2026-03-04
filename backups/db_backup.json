@@ -1,0 +1,24 @@
+[
+{
+  "model": "accounts.accounts",
+  "fields": {
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "hello",
+    "last_name": "",
+    "is_staff": false,
+    "date_joined": "2025-12-27T03:10:10.182Z",
+    "name": "Alice Smith",
+    "username": "alice123",
+    "email": "alice@example.com",
+    "password": "pbkdf2_sha256$1200000$7LDx7wUm8FUNf54tVpWjBb$A1evSdCzVuTzJ9Djbjy1n1U/LHlwvJ9Xngw69RMt7tY=",
+    "role": "user",
+    "address": "123 Main Street, City, Country",
+    "mobile_number": 1234567890,
+    "profile_pic": "https://example.com/images/alice.jpg",
+    "is_active": true,
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
